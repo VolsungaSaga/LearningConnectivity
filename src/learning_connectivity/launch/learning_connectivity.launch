@@ -1,0 +1,34 @@
+<launch>
+<!-- This file's purpose is to make our lives easier by launching all the necessary nodes that enable 
+the functioning of our application. As of May 29,2018, this includes:
+
+- mocap_optitrack/mocap
+- turtlebot_navigation/gmapping
+- LearningConnectivity/worldToOdom_tf
+- LearningConnectivity/convertMocapToOdom
+
+-->
+
+	<include file="$(find mocap_optitrack)/launch/mocap.launch"></include>
+
+	<include file="$(find turtlebot_navigation)/launch/gmapping_demo.launch"></include>
+
+	<node pkg="learning_connectivity"
+		  type="worldToOdom_tf"
+		  name="worldToOdom_tf"
+		  respawn="false"
+		  required="true">
+	</node>
+
+	<node pkg="learning_connectivity"
+		  type="convertMocapToOdom"
+		  name="convertMocapToOdom"
+		  respawn="false"
+		  required="false">
+	</node>
+
+
+
+
+
+</launch>
