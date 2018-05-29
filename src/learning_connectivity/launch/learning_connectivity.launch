@@ -4,24 +4,22 @@ the functioning of our application. As of May 29,2018, this includes:
 
 - mocap_optitrack/mocap
 - turtlebot_navigation/gmapping
-- LearningConnectivity/worldToOdom_tf
-- LearningConnectivity/convertMocapToOdom
+- learning_connectivity/worldToOdom_tf
+- learning_connectivity/convertMocapToOdom
 
 -->
 
 	<include file="$(find mocap_optitrack)/launch/mocap.launch"></include>
 
-	<include file="$(find turtlebot_navigation)/launch/gmapping_demo.launch"></include>
-
 	<node pkg="learning_connectivity"
-		  type="worldToOdom_tf"
-		  name="worldToOdom_tf"
+		  type="robot1-baselink-tf.py"
+		  name="tf_robot1_baselink"
 		  respawn="false"
-		  required="true">
+		  required="false">
 	</node>
 
 	<node pkg="learning_connectivity"
-		  type="convertMocapToOdom"
+		  type="convertMocapToOdom.py"
 		  name="convertMocapToOdom"
 		  respawn="false"
 		  required="false">
